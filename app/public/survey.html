@@ -17,7 +17,7 @@
         <hr>
     
         <h3><strong>About You</strong></h3>
-        <form action="/api/friends" method="POST">
+        <form>
             <h4>Name (Required)</h4>
             <input type="text" name="full_name" id="name" class="form-control" required="">
         
@@ -169,11 +169,16 @@
         </div>
     </div>
 
-    <!-- <script>
-        $.ajax({
-            url: "/api/friends",
-            method: "POST" 
+    <script>
+        $("#form").on("submit", function(event) {
+            event.preventDefault()
+
+            const formData = // some function to get the data from your form
+            console.log($(this).serializeArray());
+            // $.post("api/path", formData, function(response) {
+            //     console.log(response)
+            // })
         })
-    </script> -->
+    </script>
 </body>
 </html>
