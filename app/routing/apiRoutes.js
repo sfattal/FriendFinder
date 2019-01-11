@@ -42,7 +42,7 @@ module.exports = function(app) {
                     matchImg = friends[i].photo;
                 }
             }
-            res.json({status: 'OK', matchName: matchName, matchImg: matchImg});
+            res.json({matchName: matchName, matchImg: matchImg});
         }
         
         match();
