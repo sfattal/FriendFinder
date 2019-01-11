@@ -8,8 +8,7 @@ module.exports = function(app) {
     })
 
     app.post("/api/friends", function(req, res) {
-        var newUser = req.body;
-        var userData = {
+        var userSub = {
             name: (req.body.full_name),
             photo: (req.body.picture),
             scores: [
@@ -25,16 +24,29 @@ module.exports = function(app) {
                 parseInt(req.body.q_10)
             ]
         };
-        friends.push(userData);
-        var bestFriend = "Hey";
-        res.send(bestFriend);
-        console.log(res)
+        var userAns = userSub.scores
 
+        function match() {
+            var matchName = "";
+            var matchImg = "";
+            var diffRef = 100;
 
-
-        // function match() {
-
-        // }
+            for (var i = 0; i < friends.length; i++) {
+                var diff = 0;
+			    for (var j = 0; j < userAns.length; j++) {
+				    diff += Math.abs(friends[i].scores[j] - userAns[j]);
+                }
+                if (diff < diffRef) {
+                    diffRef = diff;
+                    matchName = friends[i].name;
+                    matchImg = friends[i].photo;
+                }
+            }
+            res.json({status: 'OK', matchName: matchName, matchImg: matchImg});
+        }
+        
+        match();
+        friends.push(userSub);
     });
 
     
