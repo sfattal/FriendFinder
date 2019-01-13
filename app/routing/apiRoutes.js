@@ -7,9 +7,6 @@ module.exports = function(app) {
     })
 
     app.post("/api/friends", function(req, res) {
-        console.log('this should be the body');
-        console.log(req);
-
         var array= req.body.scores
         var newArray = []
         array.forEach(function(element) {
