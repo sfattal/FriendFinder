@@ -1,6 +1,6 @@
 # FriendFinder
 
-https://git.heroku.com/afternoon-gorge-42297.git
+https://friend-finder-8.herokuapp.com/
 
 ## Instructions
 
@@ -13,6 +13,8 @@ https://git.heroku.com/afternoon-gorge-42297.git
 
 ## Functionality
 
-*run using:* `node server`
+*run using:* 
+`npm install`
+`node server`
 
 ![screenshot](./screenshot.png)
