@@ -1,5 +1,4 @@
 var path = require('path');
-// var  getBestfriend = require()
 var friends = require("../data/friends.js")
 
 module.exports = function(app) {
@@ -8,21 +7,18 @@ module.exports = function(app) {
     })
 
     app.post("/api/friends", function(req, res) {
+        console.log('this should be the body');
+        console.log(req);
+
+        var array= req.body.scores
+        var newArray = []
+        array.forEach(function(element) {
+            newArray.push(parseInt(element));
+          });
         var userSub = {
-            name: (req.body.full_name),
-            photo: (req.body.picture),
-            scores: [
-                parseInt(req.body.q_1),
-                parseInt(req.body.q_2),
-                parseInt(req.body.q_3),
-                parseInt(req.body.q_4),
-                parseInt(req.body.q_5),
-                parseInt(req.body.q_6),
-                parseInt(req.body.q_7),
-                parseInt(req.body.q_8),
-                parseInt(req.body.q_9),
-                parseInt(req.body.q_10)
-            ]
+            name: (req.body.name),
+            photo: (req.body.photo),
+            scores: newArray
         };
         var userAns = userSub.scores
 
@@ -44,10 +40,7 @@ module.exports = function(app) {
             }
             res.json({matchName: matchName, matchImg: matchImg});
         }
-        
         match();
         friends.push(userSub);
     });
-
-    
 }
